@@ -11,7 +11,7 @@ app.use(cors('*'));
 
 app.use("/empresa", rotaEmpresa)
 app.use("/usuario", rotaUsuario)
-
+console.log("teste")
 
 const PORT = process.env.PORT || 8081;
 app.listen(PORT, function() {
