@@ -4,6 +4,7 @@ const cors = require('cors');
 
 const rotaEmpresa = require('./routes/empresa');
 const rotaUsuario = require('./routes/usuario');
+const rotaLoginEmpresa = require('./routes/loginEmpresa');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -11,6 +12,8 @@ app.use(cors('*'));
 
 app.use("/empresa", rotaEmpresa)
 app.use("/usuario", rotaUsuario)
+app.use("/loginEmpresa", rotaLoginEmpresa)
+
 
 const PORT = process.env.PORT || 8081;
 app.listen(PORT, function() {
