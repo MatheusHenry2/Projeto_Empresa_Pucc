@@ -11,7 +11,7 @@ router.post('/', async(req, res) => {
     //validar todos os campos
     const schema = yup.object().shape({
         nome_usuario: yup.string().required(),
-        senha_usuario: yup.string().email().required(),
+        senha_usuario: yup.string().required(),
         email_usuario: yup.string().required(),
     })
 
