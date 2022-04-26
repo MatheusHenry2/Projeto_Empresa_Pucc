@@ -1,7 +1,7 @@
 const Connection = require('../infra/mysqlConnection');
 
 async function verificaLoginEmpresa(email_empresa, senha_empresa) {
-    const sql = 'SELECT EMAIL_EMPRESA FROM EMPRESA WHERE EMAIL_EMPRESA = ?;';
+    const sql = 'SELECT * FROM EMPRESA WHERE EMAIL_EMPRESA = ?;';
 
     const result = await Connection.promise().query(sql, email_empresa);
 
