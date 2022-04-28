@@ -1,10 +1,23 @@
 const express = require('express');
 const router = express.Router();
+const yup = require('yup')
 
 const { verificaLoginUsuario } = require("../database/loginUsuario");
 
 router.post('/', async(req, res) => {
     const { email_usuario, senha_usuario } = req.body;
+
+    //validar todos os campos
+    const schema = yup.object().shape({
+        email_usuario: yup.string().email().required(),
+        senha_usuario: yup.string().required(),
+    })
+
+    if (!(await schema.isValid(req.body))) {
+        return res.status(400).json({
+            mensagem: "Erro: Você preencheu algum campo errado"
+        })
+    }
 
     verificaLoginUsuario(email_usuario, senha_usuario).then(result => {
         res.status(200).send(result);
